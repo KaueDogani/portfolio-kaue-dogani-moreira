@@ -1,0 +1,174 @@
+Saúde Pública: Sistema de Triagem Automatizada
+Problema Identificado
+
+Hospitais públicos frequentemente enfrentam superlotação nas emergências. Muitas vezes pacientes graves aguardam junto com casos leves, aumentando o risco de mortes e atrasos no atendimento.
+
+A solução proposta é um sistema de triagem automatizada que analisa:
+
+idade;
+frequência cardíaca;
+nível de dor;
+dificuldade respiratória;
+temperatura corporal.
+
+Com base nesses dados, o sistema define a prioridade do atendimento.
+
+Passo 1: Modelagem Visual (Fluxograma)
+                ┌───────────┐
+                │  INÍCIO   │
+                └─────┬─────┘
+                      │
+                      ▼
+        ┌─────────────────────────┐
+        │ Ler dados do paciente   │
+        │ idade, dor, febre etc. │
+        └──────────┬──────────────┘
+                   │
+                   ▼
+        ┌─────────────────────────┐
+        │ Dados são válidos?      │
+        └───────┬────────┬────────┘
+                │SIM     │NÃO
+                ▼        ▼
+      ┌────────────────┐ ┌─────────────────┐
+      │ Verificar      │ │ Exibir erro     │
+      │ dificuldade    │ │ e pedir dados   │
+      │ respiratória   │ │ novamente       │
+      └──────┬─────────┘ └────────┬────────┘
+             │SIM                 │
+             ▼                    │
+ ┌──────────────────────────┐     │
+ │ Prioridade máxima        │◄────┘
+ │ Atendimento imediato     │
+ └──────────┬───────────────┘
+            │NÃO
+            ▼
+ ┌──────────────────────────┐
+ │ Dor > 8 ou febre alta?   │
+ └───────┬─────────┬────────┘
+         │SIM      │NÃO
+         ▼         ▼
+┌────────────────┐ ┌────────────────────┐
+│ Prioridade alta│ │ Verificar idade    │
+└────────┬───────┘ │ acima de 60 anos   │
+         │         └───────┬────────────┘
+         │                 │SIM
+         │                 ▼
+         │      ┌────────────────────┐
+         │      │ Prioridade média   │
+         │      └─────────┬──────────┘
+         │                │NÃO
+         ▼                ▼
+      ┌────────────────────────┐
+      │ Prioridade baixa       │
+      └──────────┬─────────────┘
+                 │
+                 ▼
+           ┌───────────┐
+           │    FIM    │
+           └───────────┘
+Passo 2: Pseudocódigo (Portugol)
+algoritmo "TriagemHospital"
+
+var
+idade: inteiro
+dor: inteiro
+temperatura: real
+respiracao: caractere
+
+inicio
+
+escreva("Digite a idade do paciente: ")
+leia(idade)
+
+escreva("Digite o nível de dor (0 a 10): ")
+leia(dor)
+
+escreva("Digite a temperatura corporal: ")
+leia(temperatura)
+
+escreva("Possui dificuldade respiratória? (S/N): ")
+leia(respiracao)
+
+se (idade < 0) ou (dor < 0) ou (dor > 10) então
+    escreva("ERRO: Dados inválidos")
+senao
+
+    se (respiracao = "S") então
+        escreva("PRIORIDADE MÁXIMA")
+        escreva("Atendimento imediato")
+
+    senao
+
+        se (dor >= 8) ou (temperatura >= 39) então
+            escreva("PRIORIDADE ALTA")
+
+        senao
+
+            se (idade >= 60) então
+                escreva("PRIORIDADE MÉDIA")
+
+            senao
+                escreva("PRIORIDADE BAIXA")
+            fimse
+
+        fimse
+
+    fimse
+
+fimse
+
+fimalgoritmo
+Passo 3: Teste de Mesa
+Cenário A — Entrada Ideal
+Entrada	Valor
+Idade	35
+Dor	5
+Temperatura	37
+Respiração	N
+Resultado:
+PRIORIDADE BAIXA
+
+O paciente não apresenta sintomas graves.
+
+Cenário B — Limite/Borda
+Entrada	Valor
+Idade	60
+Dor	7
+Temperatura	38
+Respiração	N
+Resultado:
+PRIORIDADE MÉDIA
+
+O paciente entrou exatamente no limite da condição de idade.
+
+Cenário C — Erro/Exceção
+Entrada	Valor
+Idade	-5
+Dor	15
+Temperatura	37
+Respiração	X
+Resultado:
+ERRO: Dados inválidos
+
+O algoritmo identificou entradas impossíveis.
+
+Passo 4: Questões de Fechamento
+Qual foi o maior desafio logístico encontrado ao tentar traduzir o problema do mundo real para uma estrutura de decisão binária (se/senão)?
+
+O maior desafio foi transformar sintomas humanos complexos em decisões simples de verdadeiro ou falso. Na vida real, médicos analisam muitos fatores ao mesmo tempo, enquanto no algoritmo foi necessário dividir tudo em pequenas regras objetivas usando estruturas condicionais.
+
+Outro desafio foi definir prioridades sem deixar ambiguidades, porque diferentes sintomas podem acontecer simultaneamente.
+
+Com base no Teste de Mesa (Cenário C), qual modificação seria necessária para tornar seu algoritmo mais resiliente a falhas humanas ou de sensores?
+
+Seria necessário adicionar validação automática dos dados antes do processamento.
+
+Por exemplo:
+
+impedir números negativos;
+limitar o nível de dor entre 0 e 10;
+aceitar apenas “S” ou “N” para respiração;
+solicitar novamente os dados inválidos.
+
+Também seria importante integrar sensores hospitalares reais para reduzir erros de digitação humana.
