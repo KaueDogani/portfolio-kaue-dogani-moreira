@@ -1,0 +1,57 @@
+Desafio 1: O Criador de Emojis (Pixels RGB)
+Imagine que cada imagem é uma grade (matriz). Em vez de um tabuleiro de xadrez (preto e branco), vamos criar um Emoji de 5x5 pixels.
+
+Estrutura de Dados:
+
+Dicionário: Contém o nome do emoji e a "Grade".
+Grade (Lista de Listas): Representa as linhas.
+Pixel (Tupla): Cada pixel é uma tupla (R, G, B).
+Amarelo: (255, 255, 0)
+Preto (Olhos/Boca): (0, 0, 0)
+Sua Tarefa:
+
+Percorra a estrutura usando 3 níveis de loops (Lote -> Linha -> Pixel).
+Se o pixel for Amarelo, aplique um "filtro de sombra": reduza o brilho em 50% (divida os valores por 2).
+Dica: Como Tuplas são imutáveis, você deve criar uma nova tupla para o pixel alterado.
+
+
+# Estrutura base para o exercício
+emoji_data = {
+    "nome": "Smile",
+    "grade": [
+        [(255,255,0), (255,255,0), (255,255,0), (255,255,0), (255,255,0)], # Linha 0
+        [(255,255,0), (0,0,0),     (255,255,0), (0,0,0),     (255,255,0)], # Linha 1 (Olhos)
+        [(255,255,0), (255,255,0), (255,255,0), (255,255,0), (255,255,0)], # Linha 2
+        [(255,255,0), (0,0,0),     (0,0,0),     (0,0,0),     (255,255,0)], # Linha 3 (Boca)
+        [(255,255,0), (255,255,0), (255,255,0), (255,255,0), (255,255,0)]  # Linha 4
+    ]
+}
+ 
+ 
+# TODO: Implemente os 3 níveis de FOR aqui﻿
+# Use .items() para o dicionário e .append() para a nova lista de pixels
+
+
+Desafio 2: Matrizes Musicais (Transposição)
+As notas de uma melodia de emoji (toque de celular) foram guardadas em matrizes 2x2.
+
+Tarefa: Acesse o dicionário de músicas e inverta as linhas pelas colunas (Transposição) de cada matriz.
+
+
+
+biblioteca_musical = {
+    "Toques": [
+        {"Alegre": ([440, 480], [520, 560])},
+        {"Triste": ([200, 150], [100, 50])}
+    ]
+}
+# TODO: Use 3 níveis de loops para acessar cada nota e inverter a matriz.
+# Pesquise no W3Schools como usar o método .update() em dicionários.
+
+
+Desafio 3: O Integrador (Criação Livre)
+Tarefa: Crie uma estrutura que misture os dois conceitos anteriores.
+
+Crie um dicionário que guarde uma "Playlist de Imagens".
+Use obrigatoriamente: 1 Lista, 1 Tupla e 1 Dicionário.
+Obrigatório usar 3 níveis de for e pelo menos um método de cada estrutura (ex: .pop(), .keys(), .insert()).
