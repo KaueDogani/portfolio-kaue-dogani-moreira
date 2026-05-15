@@ -1,0 +1,387 @@
+1-
+
+def processar_vendas():
+
+  total_compra = 0.0
+
+  itens_comprados = 0
+
+
+
+  quantidade_tipos = 0
+
+  while True:
+
+    try:
+
+      quantidade_input = input("Quantos produtos diferentes foram comprados? ")
+
+      quantidade_tipos = int(quantidade_input)
+
+      if quantidade_tipos <= 0:
+
+        print("O número de produtos deve ser um valor inteiro positivo.")
+
+      else:
+
+        break # Exit loop if input is valid
+
+    except ValueError:
+
+      print("Entrada inválida. Por favor, digite um número inteiro para a quantidade de produtos.")
+
+
+
+  for i in range(quantidade_tipos):
+
+    print(f"\nProduto {i+1}")
+
+
+
+    nome = input("Nome do produto: ")
+
+    
+
+    preco = 0.0
+
+    while True:
+
+      try:
+
+        preco_input = input("Preço unitário: ")
+
+        # Replace comma with dot for float conversion, common in some locales
+
+        preco = float(preco_input.replace(',', '.'))
+
+4
+
+def simulador_poupanca():
+
+  saldo = float(input("Valor inicial do investimento: "))
+
+  taxa = float(input("Taxa de juros mensal (em %): "))
+
+  meses = int(input("Número de meses da simulação: "))
+
+
+
+  for m in range(1, meses + 1):
+
+    aporte = float(input(f"\nQuanto deseja depositar no mês {m}? (0 para nenhum): "))
+
+
+
+    saldo += aporte
+
+    juros = saldo * (taxa / 100)
+
+    saldo += juros
+
+
+
+    print(f"Mês {m}: Saldo atualizado = R$ {saldo:.2f}")
+
+
+
+    if saldo > 10000:
+
+      print(f"Parabéns! Você atingiu a meta de 10k no mês {m}")
+
+
+
+  print(f"\nResultado final após {meses} meses: R$ {saldo:.2f}")
+
+
+
+
+
+# Executar
+
+simulador_poupanca()
+
+
+
+        if preco <= 0:
+
+          print("O preço deve ser um valor positivo. Tente novamente.")
+
+        else:
+
+          break # Exit loop if valid
+
+      except ValueError:
+
+        print("Entrada inválida para o preço. Por favor, digite um número.")
+
+
+
+    qtd = 0
+
+    while True:
+
+      try:
+
+        qtd_input = input("Quantidade deste produto: ")
+
+        qtd = int(qtd_input)
+
+        if qtd <= 0:
+
+          print("A quantidade deve ser um valor inteiro positivo. Tente novamente.")
+
+        else:
+
+          break # Exit loop if valid
+
+      except ValueError:
+
+        print("Entrada inválida para a quantidade. Por favor, digite um número inteiro.")
+
+
+
+    subtotal = preco * qtd
+
+    total_compra += subtotal
+
+    itens_comprados += qtd
+
+
+
+  # Aplicação de desconto
+
+  if total_compra > 500:
+
+    total_final = total_compra * 0.90
+
+    print("Desconto de 10% aplicado!")
+
+  elif total_compra > 200:
+
+    total_final = total_compra * 0.95
+
+    print("Desconto de 5% aplicado!") # Added explicit print for 5% discount
+
+  else:
+
+    total_final = total_compra
+
+
+
+  print(f"\nResumo: {itens_comprados} itens. Total a pagar: R$ {total_final:.2f}")
+
+
+
+
+
+# Executar a função
+
+processar_vendas()
+
+
+
+2
+
+def analisar_clima():
+
+  soma_temperaturas = 0.0
+
+  dias_quentes = 0
+
+  alerta_extremo = False
+
+
+
+  for dia in range(1, 8):
+
+    temp = 0.0
+
+    while True:
+
+      try:
+
+        temp_input = input(f"Digite a temperatura do dia {dia}: ")
+
+        temp = float(temp_input.replace(',', '.')) # Replace comma with dot for float conversion
+
+        break # Exit loop if input is valid
+
+      except ValueError:
+
+        print("Entrada inválida. Por favor, digite um número para a temperatura.")
+
+
+
+    soma_temperaturas += temp
+
+
+
+    if temp > 35.0:
+
+      dias_quentes += 1
+
+
+
+    if temp > 45.0 or temp < -5.0:
+
+      alerta_extremo = True
+
+
+
+  media = soma_temperaturas / 7
+
+
+
+  print(f"\nMédia semanal: {media:.2f}")
+
+  print(f"Dias acima de 35°C: {dias_quentes}")
+
+
+
+  if alerta_extremo:
+
+    print("CUIDADO: Condições climáticas perigosas detectadas!")
+
+  else:
+
+    print("Clima dentro da normalidade operacional.")
+
+
+
+
+
+# Executar a função
+
+analisar_clima()
+
+
+
+3
+
+def sistema_notas_turma():
+
+  total_alunos = 0
+
+  while True:
+
+    try:
+
+      alunos_input = input("Quantos alunos existem na turma? ")
+
+      total_alunos = int(alunos_input)
+
+      if total_alunos <= 0:
+
+        print("O número de alunos deve ser um inteiro positivo.")
+
+      else:
+
+        break
+
+    except ValueError:
+
+      print("Entrada inválida. Por favor, digite um número inteiro para o total de alunos.")
+
+
+
+  for j in range(1, total_alunos + 1):
+
+    print(f"\nAluno {j}")
+
+
+
+    aluno_nome = input("Nome do aluno: ")
+
+    
+
+    n1 = 0.0
+
+    while True:
+
+      try:
+
+        n1_input = input("Nota 1: ")
+
+        n1 = float(n1_input.replace(',', '.'))
+
+        if not (0 <= n1 <= 10): # Assuming grades are between 0 and 10
+
+          print("A nota deve ser um valor entre 0 e 10.")
+
+        else:
+
+          break
+
+      except ValueError:
+
+        print("Entrada inválida para Nota 1. Por favor, digite um número.")
+
+
+
+    n2 = 0.0
+
+    while True:
+
+      try:
+
+        n2_input = input("Nota 2: ")
+
+        n2 = float(n2_input.replace(',', '.'))
+
+        if not (0 <= n2 <= 10):
+
+          print("A nota deve ser um valor entre 0 e 10.")
+
+        else:
+
+          break
+
+      except ValueError:
+
+        print("Entrada inválida para Nota 2. Por favor, digite um número.")
+
+
+
+    media_aluno = (n1 + n2) / 2
+
+
+
+    if media_aluno >= 7.0:
+
+      print(f"{aluno_nome}: Aprovado com média {media_aluno:.2f}")
+
+    elif media_aluno >= 5.0:
+
+      print(f"{aluno_nome}: Recuperação (Média: {media_aluno:.2f})")
+
+    else:
+
+      print(f"{aluno_nome}: Reprovado")
+
+
+
+
+
+# Executar
+
+sistema_notas_turma()
+
+
+
+Sobre Tipagem: No Python, não precisamos declarar explicitamente se uma variável é Real ou Inteiro (como feito no pseudocódigo). No entanto, ao usar a função input(), o que acontece se você esquecer de usar as funções float() ou int() para envolver o input? Como isso afeta as operações matemáticas?
+
+
+
+Se você não usar int() ou float(), o Python trata os dados como texto.
+
+
+
+Sobre Estruturas: No Pseudocódigo 1 e 4, utilizamos um laço PARA. No Python, a função range() é comumente usada para isso. Se quisermos que o laço conte de 1 até o número exato de meses (incluindo o último), como deve ficar a sintaxe do range()? Explique por que o Python se comporta de forma diferente do pseudocódigo tradicional neste aspecto.
+
+
+
+Isso acontece porque a função range(início, fim) no Python não inclui o valor final, ou seja, ela vai até fim - 1.
+
+Diferente do pseudocódigo, onde o intervalo é fechado (inclui o último valor), o Python usa um intervalo semiaberto [início, fim).
+
+Esse comportamento facilita cálculos, evita erros de contagem e combina melhor com índices de listas, que começam em 0.
