@@ -50,3 +50,5 @@ Me aprimorando para ser um desenvovedor full stack e procurando experiencias rea
 ### 🏗 Estrutura do Repositório
 
 - `README.md`: Apresentação principal
+- `/reciclo/`: Código-fonte da plataforma ReCiclo.
+- `/vendas-audit/`: Lógica de processamento e auditoria em Python.
